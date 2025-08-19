@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR-AllWays</title>
+    <script src="libs/qrcode.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Input Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h1>🎯 QR Generator</h1>
+                <p>Create elegant QR codes for any data type</p>
+            </div>
+            <div class="panel-content">
+                <!-- Data Type Selector -->
+                <div class="data-type-selector">
+                    <div class="type-tabs">
+                        <div class="type-tab active" data-type="text">
+                            <span>📝</span> Text
+                        </div>
+                        <div class="type-tab" data-type="url">
+                            <span>🌐</span> URL
+                        </div>
+                        <div class="type-tab" data-type="email">
+                            <span>📧</span> Email
+                        </div>
+                        <div class="type-tab" data-type="phone">
+                            <span>📱</span> Phone
+                        </div>
+                        <div class="type-tab" data-type="sms">
+                            <span>💬</span> SMS
+                        </div>
+                        <div class="type-tab" data-type="wifi">
+                            <span>📶</span> WiFi
+                        </div>
+                        <div class="type-tab" data-type="vcard">
+                            <span>👤</span> Contact
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Form Sections -->
+                <div id="text-form" class="form-section active">
+                    <div class="input-group">
+                        <label>Text Content</label>
+                        <textarea id="textContent" placeholder="Enter any text content..." maxlength="2000"></textarea>
+                    </div>
+                </div>
+
+                <div id="url-form" class="form-section">
+                    <div class="input-group">
+                        <label>Website URL</label>
+                        <input type="url" id="urlInput" placeholder="https://example.com" maxlength="500">
+                    </div>
+                </div>
+
+                <div id="email-form" class="form-section">
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" id="emailAddress" placeholder="user@example.com" maxlength="254">
+                    </div>
+                    <div class="input-group">
+                        <label>Subject (Optional)</label>
+                        <input type="text" id="emailSubject" placeholder="Email subject" maxlength="100">
+                    </div>
+                    <div class="input-group">
+                        <label>Message (Optional)</label>
+                        <textarea id="emailBody" placeholder="Email message..." maxlength="1000"></textarea>
+                    </div>
+                </div>
+
+                <div id="phone-form" class="form-section">
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phoneNumber" placeholder="+1-234-567-8900" maxlength="20">
+                    </div>
+                </div>
+
+                <div id="sms-form" class="form-section">
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="smsNumber" placeholder="+1-234-567-8900" maxlength="20">
+                    </div>
+                    <div class="input-group">
+                        <label>Message</label>
+                        <textarea id="smsMessage" placeholder="SMS message..." maxlength="160"></textarea>
+                    </div>
+                </div>
+
+                <div id="wifi-form" class="form-section">
+                    <div class="input-group">
+                        <label>Network Name (SSID)</label>
+                        <input type="text" id="wifiSSID" placeholder="MyWiFiNetwork" maxlength="32" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="text" id="wifiPassword" placeholder="WiFi password" maxlength="63">
+                    </div>
+                    <div class="input-group">
+                        <label>Security Type</label>
+                        <select id="wifiSecurity">
+                            <option value="WPA">WPA/WPA2</option>
+                            <option value="WEP">WEP</option>
+                            <option value="nopass">Open (No Password)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="vcard-form" class="form-section">
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>First Name</label>
+                            <input type="text" id="firstName" placeholder="John" maxlength="50">
+                        </div>
+                        <div class="input-group">
+                            <label>Last Name</label>
+                            <input type="text" id="lastName" placeholder="Doe" maxlength="50">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Organization</label>
+                        <input type="text" id="organization" placeholder="Company Name" maxlength="100">
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input type="tel" id="vcardPhone" placeholder="+1-234-567-8900" maxlength="20">
+                        </div>
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" id="vcardEmail" placeholder="john@example.com" maxlength="254">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Website</label>
+                        <input type="url" id="vcardWebsite" placeholder="https://example.com" maxlength="500">
+                    </div>
+                </div>
+
+                <!-- Customization Panel -->
+                <div class="customization-panel">
+                    <div class="customization-title">
+                        <span>🎨</span> Customize QR Code
+                    </div>
+                    <div class="controls-grid">
+                        <div class="control-group">
+                            <label>Size</label>
+                            <input type="range" id="sizeRange" min="150" max="500" value="280" step="10">
+                            <span class="value-display" id="sizeDisplay">280px</span>
+                        </div>
+                        <div class="control-group">
+                            <label>Error Level</label>
+                            <select id="errorLevel">
+                                <option value="L">Low (~7%)</option>
+                                <option value="M" selected>Medium (~15%)</option>
+                                <option value="Q">Quartile (~25%)</option>
+                                <option value="H">High (~30%)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>Foreground</label>
+                            <input type="color" id="foregroundColor" value="#2c3e50">
+                        </div>
+                        <div class="control-group">
+                            <label>Background</label>
+                            <input type="color" id="backgroundColor" value="#ffffff">
+                        </div>
+                    </div>
+                </div>
+
+                <button class="generate-btn" onclick="generateQR()" id="generateButton">
+                    Generate QR Code
+                </button>
+            </div>
+        </div>
+
+        <!-- Display Panel -->
+        <div class="panel">
+            <div class="panel-header">
+                <h1>📱 Preview</h1>
+                <p>Your generated QR code</p>
+            </div>
+            <div class="panel-content">
+                <div class="qr-display" id="qrDisplay">
+                    <div class="qr-placeholder" id="qrPlaceholder">
+                        🎯 Enter data and click generate to create your QR code
+                    </div>
+                    <div id="qrcode"></div>
+                    <div id="qrInfo" class="qr-info" style="display: none;"></div>
+                    <div id="actionButtons" class="action-buttons" style="display: none;"></div>
+                    <div id="error"></div>
+                    <div id="success"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
