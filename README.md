@@ -32,7 +32,7 @@ Easily generate customized QR codes for different data types like text, URLs, em
 5. Download or copy your QR code instantly.  
 
 ## 🌐 Live Demo
-👉 [Click here to try it live](https://<DhruvaKR>.github.io/qr-code-generator/)
+👉 [Click here to try it live]([https://<DhruvaKR>.github.io/qr-code-generator/](https://dhruvakr.github.io/QR-AllWays/))
 
 ## 📸 Preview
 ![QR Code Generator Screenshot](https://github.com/<DhruvaKR>/<QR-AllWays>/blob/main/screenshot.png?raw=true)
