@@ -34,9 +34,6 @@ Easily generate customized QR codes for different data types like text, URLs, em
 ## 🌐 Live Demo
 👉 [Click here to try it live](https://DhruvaKR.github.io/QR-AllWays/)
 
-## 📸 Preview
-![QR Code Generator Screenshot](https://github.com/<DhruvaKR>/<QR-AllWays>/blob/main/screenshot.png?raw=true)
-
 ## 📜 License
 This project is open-source and free to use.  
 
